@@ -98,7 +98,7 @@
           <h4 class=" title"><b>Users Profile</b></h4>
         </div>
         <div class=" card-body">
-          <form >
+          <form [formGroup]="userForm" >
             <div class="row">
               <div class="col-md-4">
                 <b style="float:left"> FirstName </b>
@@ -107,7 +107,10 @@
 
               <div class=" col-md-8">
                 <div class=" form-group">
-                  <input class=" form-control" placeholder="Firstname" type="text" value="Narender" />
+                  <input class=" form-control" placeholder="First Name" type="text" formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" value="Narender" />
+                  <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                </div>
                 </div>
               </div>
             </div>
@@ -119,7 +122,10 @@
 
               <div class=" col-md-8">
                 <div class=" form-group">
-                  <input class=" form-control" placeholder="SecondName" type="text" value="Kuthadi" />
+                  <input class=" form-control" placeholder="SecondName" type="text" value="Kuthadi" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                  <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                </div>
                 </div>
               </div>
             </div>
@@ -201,7 +207,7 @@
           </form>
         </div>
         <div class=" card-footer">
-          <button style="float:right" class=" btn btn-fill btn-primary" type="submit">Save</button>
+          <button style="float:right" class=" btn btn-fill btn-primary" type="submit" (click)="onSubmit()">Save</button>
         </div>
       </div>
 

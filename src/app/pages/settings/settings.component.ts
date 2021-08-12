@@ -20,6 +20,8 @@ export class SettingsComponent implements OnInit {
   });
   }
 
+  get f() { return this.settingForm.controls; }
+
   onSubmit() {
     this.submitted = true;
 

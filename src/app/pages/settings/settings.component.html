@@ -21,15 +21,13 @@
             </div>
             <div class="row">
               <div class="col-md-4">
-                <b style="float:left">Email Address </b>
+                <b style="float:left"> Email <Address></Address> </b>
                 <b style="float:right">:</b>
               </div>
 
               <div class=" col-md-8">
                 <div class=" form-group">
-                  <input  placeholder="email address" type="text"  formControlName="email"/>
-                
-                  
+                  <input class=" form-control" placeholder="Email" type="text" value="Narender@onpassive.com" />
                 </div>
               </div>
             </div>
@@ -41,7 +39,10 @@
 
               <div class=" col-md-8 ">
                 <div class=" form-group">
-                  <input class=" form-control" disabled="" placeholder="Company" type="password" value="12345678" />
+                  <input class=" form-control" disabled="" placeholder="Company" type="password" value="12345678"  formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password min lenght is 8</div>
+                </div>
                 </div>
               </div>
             </div>
